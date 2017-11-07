@@ -1,0 +1,46 @@
+void Merge(int left[], int lenLeft, int right[], int lenRight, int sir[])
+{
+	int i, j;
+
+	i = 0;
+	j = 0;
+
+	while (i < lenLeft && j < lenRight)
+	{
+		if (left[i] < right[j])
+		{
+			sir[i + j] = left[i];
+			i++;
+		}
+		else
+		{
+			sir[i + j] = right[j];
+			j++;
+		}
+	}
+
+	while (i < lenLeft)
+		sir[i + j] = left[i++];
+
+	while (j < lenRight)
+		sir[i + j] = right[j++];
+}
+
+void MergeSort(int sir[], int lenSir)
+{
+	if (lenSir >= 2)
+	{
+		int mid = lenSir / 2;
+		int *left = new int[mid];
+		int *right = new int[lenSir - mid];
+
+		for (int i = 0; i < mid; i++)
+			left[i] = sir[i];
+		for (int i = mid; i < lenSir; i++)
+			right[i - mid] = sir[i];
+
+		MergeSort(left, mid);
+		MergeSort(right,lenSir-mid);
+		Merge(left,mid, right, lenSir-mid,sir);
+	}
+}

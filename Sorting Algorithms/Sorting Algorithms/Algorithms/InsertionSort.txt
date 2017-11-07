@@ -1,0 +1,18 @@
+void insertionSort(int sir[], int lenSir)
+{
+	int aux, poz;
+
+	for (int i = 1; i < lenSir; i++)
+	{
+		aux = sir[i];
+		poz = i;
+
+		while (poz > 0 && sir[poz - 1] > aux)
+		{
+			sir[poz] = sir[poz - 1];
+			poz--;
+		}
+
+		sir[poz] = aux;
+	}
+}

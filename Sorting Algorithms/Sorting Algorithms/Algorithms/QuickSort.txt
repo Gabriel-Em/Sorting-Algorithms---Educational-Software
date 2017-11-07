@@ -1,0 +1,34 @@
+int partition(int sir[], int start, int end)
+{
+	int pivot = sir[end], pIndex = start, aux;
+
+	for (int i = start; i < end; i++)
+	{
+		if (sir[i] < pivot)
+		{
+			aux = sir[i];
+			sir[i] = sir[pIndex];
+			sir[pIndex] = aux;
+			pIndex++;
+		}
+	}
+
+	aux = sir[end];
+	sir[end] = sir[pIndex];
+	sir[pIndex] = aux;
+
+	return pIndex;
+}
+
+void quickSort(int sir[], int start, int end)
+{
+	if (start < end)
+	{
+		int pIndex;
+
+		pIndex = partition(sir, start, end);
+
+		quickSort(sir, start, pIndex - 1);
+		quickSort(sir, pIndex + 1, end);
+	}
+}

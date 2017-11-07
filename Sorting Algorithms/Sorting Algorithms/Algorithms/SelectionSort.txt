@@ -1,0 +1,17 @@
+void selectionSort(int sir[], int lenSir)
+{	
+	int pozMin;
+	
+	for (int i = 0; i < lenSir - 1; i++)
+	{
+		pozMin = i;
+
+		for (int j = i + 1; j < lenSir; j++)
+			if (sir[j] < sir[pozMin])
+				pozMin = j;
+
+		int aux = sir[pozMin];
+		sir[pozMin] = sir[i];
+		sir[i] = aux;
+	}
+}
